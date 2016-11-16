@@ -18,6 +18,7 @@
 	{
 		Tags { "RenderType"="MKGlow"}
 		LOD 200
+		Cull Off
 
 		CGPROGRAM
 		#pragma surface surf Lambert

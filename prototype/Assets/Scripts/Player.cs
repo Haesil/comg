@@ -3,24 +3,26 @@ using System.Collections;
 
 
 public class Player : MonoBehaviour {
-    float speed = 3.0f;
-    float curve = 4.5f;
-
-    Quaternion initRotation;
+    float speed = 6.0f;                             // 앞뒤 이동값 초기화
+    const float curve = 5.5f;                    // 좌우 이동값(고정)
+    bool isJumped;                                  // 점프했는지 알려주는 변수
 
     // Use this for initialization
-    void Start () {
-
+    void Start ()
+    {
+        isJumped = false;                           // 점프상태 초기화
     }   
+    
 	// Update is called once per frame
-	void Update ()
+	void FixedUpdate ()
     {
 
-        gameObject.transform.rotation = Quaternion.Euler(0.0f,0.0f,0.0f);                   // 회전하지 않도록
+        //Debug.Log(speed);
+        //gameObject.transform.rotation = Quaternion.Euler(0.0f,0.0f,0.0f);                   // 회전하지 않도록
 
-        if (Input.GetKeyDown(KeyCode.Space) && transform.position.y >= 0.64 && transform.position.y <= 0.66)                                    // 점프
+        if (Input.GetKeyDown(KeyCode.Space) && isJumped == false)                                    // 점프
         {
-            GetComponent<Rigidbody>().AddForce(Vector3.up * 250);
+            GetComponent<Rigidbody>().AddForce(Vector3.up * 800);
         }
 
         float amtMove = speed * Time.deltaTime;
@@ -28,16 +30,14 @@ public class Player : MonoBehaviour {
 
         transform.Translate(Vector3.forward * amtMove);
 
-        if (Input.GetKey(KeyCode.UpArrow) && speed < 35.0f)         //가속
+        if (Input.GetKey(KeyCode.UpArrow) && speed < 60.0f)         //가속
         {
-            speed += 0.3f;
-            Debug.Log(speed);
+            speed += 0.6f;
         }
 
-        if (Input.GetKey(KeyCode.DownArrow) && speed > 3.0f)         //감속
+        if (Input.GetKey(KeyCode.DownArrow) && speed > 6.0f)         //감속
         {
-            speed -= 0.3f;
-            Debug.Log(speed);
+            speed -= 0.6f;
         }
 
         if (Input.GetKey(KeyCode.LeftArrow))         //좌이동
@@ -50,9 +50,30 @@ public class Player : MonoBehaviour {
             transform.Translate(Vector3.right * amtCurve);
         }
     }
+    
+    void OnCollisionExit (Collision other)                                         // 나 점프했다
+    {
+        if (other.gameObject.CompareTag("ground"))                     // 바닥에서 점프할때만
+            isJumped = true;
+        Debug.Log(isJumped);
+
+    }
+
+    void OnCollisionEnter (Collision other)                                       // 나 착지했다
+    {
+        if (other.gameObject.CompareTag("ground"))
+            isJumped = false;
+        Debug.Log(isJumped);
+
+    }
 
     void FastMove ()
     {
-        speed = 35.0f;
+        speed = 60.0f;
+    }
+
+    void DragToPlanet(Vector3 direction)
+    {
+        transform.Translate(direction);
     }
 }

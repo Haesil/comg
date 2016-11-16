@@ -6,7 +6,6 @@ public class upsidedown : MonoBehaviour {
     void OnTriggerStay()
     {
         GameObject.Find("Main Camera").SendMessage("UpsideDown");
-
     }
 
     void OnTriggerExit()

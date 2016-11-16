@@ -3,14 +3,14 @@ using System.Collections;
 
 public class doubleSize : MonoBehaviour {
 
-    void OnCollisionEnter(Collision col)
+   /* void OnCollisionEnter(Collision col)
     {
         Debug.Log("ㅏㅔㅓㅐㅔㅓ");
         if (col.gameObject.transform.localScale.x <= 3)
         {
             col.gameObject.GetComponent<Rigidbody>().
         }
-    }
+    }*/
     
 	// Use this for initialization
 	void Start () {

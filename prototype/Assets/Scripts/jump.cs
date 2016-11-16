@@ -6,6 +6,6 @@ public class jump : MonoBehaviour {
 	// Use this for initialization
 	void OnCollisionEnter(Collision col)
     {
-        col.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.up * 500);
+        col.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.up * 1800);
     }
 }
