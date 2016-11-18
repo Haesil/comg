@@ -99,6 +99,7 @@ GameObject:
   - 81: {fileID: 98756563}
   - 114: {fileID: 98756568}
   - 114: {fileID: 98756569}
+  - 114: {fileID: 98756570}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -185,9 +186,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b34edde95760454f8bd00787aae282f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
-  cameraPosition: {x: 0, y: 0, z: 0}
-  direction: {x: 0, y: 0, z: 0}
 --- !u!114 &98756569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,25 +200,50 @@ MonoBehaviour:
   blurShader: {fileID: 4800000, guid: 1855d9636fad3914bacc4a543165c974, type: 3}
   compositeShader: {fileID: 4800000, guid: e384de4389ba527479054baf0ddb1d3e, type: 3}
   glowRenderShader: {fileID: 4800000, guid: c04b7cae8accdfb4e9c2648823ff39d7, type: 3}
-  compositeMaterial: {fileID: 0}
-  blurMaterial: {fileID: 0}
-  glowCamera: {fileID: 0}
-  glowCameraObject: {fileID: 0}
-  glowTexture: {fileID: 0}
-  glowLayer: {}
+  glowLayer:
+    serializedVersion: 2
+    m_Bits: 4294967295
   renderCamera: {fileID: 98756566}
   showCutoutGlow: 0
   showTransparentGlow: 1
   glowType: 0
-  fullScreenGlowTint:
-    r: 1
-    g: 1
-    b: 1
-    a: 0
+  fullScreenGlowTint: {r: 1, g: 1, b: 1, a: 0}
   blurSpread: 0.6
   blurIterations: 0
   glowIntensity: 0.806
   samples: 8
+--- !u!114 &98756570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 98756562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97e9b95cf609d96409b6c40519432957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  filterType: 2
+  preview: 1
+  previewScale: {x: 0, y: 0, z: 1}
+  movementScale: 0
+  rotationScale: 1
+  maxVelocity: 8
+  minVelocity: 0.1
+  velocityScale: 0.375
+  softZDistance: 0.005
+  velocityDownsample: 1
+  excludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  shader: {fileID: 4800000, guid: 85a88efa8c871af4a9d17c64791b6f4f, type: 3}
+  dx11MotionBlurShader: {fileID: 4800000, guid: f1b13d7a80660504a858ea24cfa418c6,
+    type: 3}
+  replacementClear: {fileID: 4800000, guid: 7699c5fbfa27745a1abe111ab7bf9785, type: 3}
+  noiseTexture: {fileID: 2800000, guid: 31f5a8611c4ed1245b18456206e798dc, type: 3}
+  jitter: 0.05
+  showVelocity: 0
+  showVelocityScale: 1
 --- !u!1 &210193775
 GameObject:
   m_ObjectHideFlags: 0
@@ -1108,9 +1131,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d75acc7c348894e4ab806008555cce7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 0
-  direction: {x: 0, y: 0, z: 0}
-  player: {fileID: 0}
 --- !u!23 &1458025732
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1222,8 +1242,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68a0bbebd528a6041a7aa5d6778fb055, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
-  isJumped: 0
 --- !u!54 &1507497405
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1249,7 +1267,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 0f56c71ae6f81834f9d5e5d7dfa15829, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -1311,7 +1329,7 @@ MonoBehaviour:
   emit: 1
   emitTime: 0
   material: {fileID: 2100000, guid: c5fc4c62d5346c2499f1defb1b25362a, type: 2}
-  lifeTime: 2
+  lifeTime: 0.5
   colors: []
   sizes: []
   uvLengthScale: 0.01
@@ -1322,12 +1340,6 @@ MonoBehaviour:
   maxVertexDistance: 0.1
   maxAngle: 3
   autoDestruct: 0
-  o: {fileID: 0}
-  lastPosition: {x: 0, y: 0, z: 0}
-  lastCameraPosition1: {x: 0, y: 0, z: 0}
-  lastCameraPosition2: {x: 0, y: 0, z: 0}
-  lastRebuildTime: 0
-  lastFrameEmit: 1
 --- !u!1001 &1518285274
 Prefab:
   m_ObjectHideFlags: 0
