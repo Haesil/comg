@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+// 화면이 뒤집어지는 발판
+
 public class upsidedown : MonoBehaviour {
 
     void OnTriggerStay()
@@ -13,13 +15,5 @@ public class upsidedown : MonoBehaviour {
         GameObject.Find("Main Camera").SendMessage("Reset");
 
     }
-    // Use this for initialization
-    void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
 }

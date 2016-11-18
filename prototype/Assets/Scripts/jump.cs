@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class jump : MonoBehaviour {
+// 높은 점프하는 발판
 
-	// Use this for initialization
+public class jump : MonoBehaviour {
+    
 	void OnCollisionEnter(Collision col)
     {
-        col.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.up * 1800);
+        col.gameObject.GetComponent<Rigidbody>().AddForce(Vector3.up * 2300);
     }
+
 }

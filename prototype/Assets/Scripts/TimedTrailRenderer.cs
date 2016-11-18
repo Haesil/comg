@@ -52,6 +52,7 @@ public class TimedTrailRenderer : MonoBehaviour
         o.AddComponent(typeof(MeshFilter));
         o.AddComponent(typeof(MeshRenderer));
         o.GetComponent<Renderer>().sharedMaterial = material;
+        o.tag = "Player";
     }
 
     void OnEnable()
@@ -65,6 +66,7 @@ public class TimedTrailRenderer : MonoBehaviour
         o.AddComponent(typeof(MeshFilter));
         o.AddComponent(typeof(MeshRenderer));
         o.GetComponent<Renderer>().sharedMaterial = material;
+        o.tag = "Player";
     }
 
     void OnDisable()
