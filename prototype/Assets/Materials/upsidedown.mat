@@ -101,7 +101,7 @@ Material:
       data:
         first:
           name: _MKGlowPower
-        second: 0.97
+        second: 1.45
       data:
         first:
           name: _MKGlowTexStrength
