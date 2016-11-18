@@ -18,7 +18,7 @@
 			float dummy;
 		};
 
-		fixed4 _Color;
+		float4 _Color;
 		sampler2D _HeightMap;
 		float4 _HeightMap_ST;
 		float _HeightMultiplier;
