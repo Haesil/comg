@@ -219,7 +219,7 @@ public class TimedTrailRenderer : MonoBehaviour
                     else lineDirection = ((Point)points[i - 1]).position - p.position;
 
                    // Vector3 vectorToCamera = Camera.main.transform.position - p.position;
-                    Vector3 perpendicular = Vector3.up;
+                    Vector3 perpendicular = this.transform.up;
 
                     newVertices[i * 2] = p.position + (perpendicular * (size * 0.5f));
                     newVertices[(i * 2) + 1] = p.position + (-perpendicular * (size * 0.5f));

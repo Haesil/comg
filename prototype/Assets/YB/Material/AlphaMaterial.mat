@@ -45,28 +45,7 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _DetailAlbedoMap
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _DetailMask
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _EmissionMap
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _MetallicGlossMap
+          name: _ParallaxMap
         second:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
@@ -80,7 +59,28 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _ParallaxMap
+          name: _EmissionMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _DetailMask
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _DetailAlbedoMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _MetallicGlossMap
         second:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
@@ -100,31 +100,11 @@ Material:
         second: 0.5
       data:
         first:
-          name: _TilingX
-        second: 3
+          name: _Parallax
+        second: 0.02
       data:
         first:
-          name: _TilingY
-        second: 15
-      data:
-        first:
-          name: _AlphaThreshold
-        second: 0.431
-      data:
-        first:
-          name: _Transparency
-        second: 0.571
-      data:
-        first:
-          name: _BumpScale
-        second: 1
-      data:
-        first:
-          name: _DetailNormalMapScale
-        second: 1
-      data:
-        first:
-          name: _GlossMapScale
+          name: _ZWrite
         second: 1
       data:
         first:
@@ -132,11 +112,19 @@ Material:
         second: 0.5
       data:
         first:
-          name: _GlossyReflections
+          name: _BumpScale
         second: 1
       data:
         first:
-          name: _Metallic
+          name: _OcclusionStrength
+        second: 1
+      data:
+        first:
+          name: _DetailNormalMapScale
+        second: 1
+      data:
+        first:
+          name: _UVSec
         second: 0
       data:
         first:
@@ -144,12 +132,16 @@ Material:
         second: 0
       data:
         first:
-          name: _OcclusionStrength
+          name: _Metallic
+        second: 0
+      data:
+        first:
+          name: _GlossMapScale
         second: 1
       data:
         first:
-          name: _Parallax
-        second: 0.02
+          name: _GlossyReflections
+        second: 1
       data:
         first:
           name: _SmoothnessTextureChannel
@@ -160,16 +152,24 @@ Material:
         second: 1
       data:
         first:
-          name: _UVSec
+          name: _Tiling
+        second: 1
+      data:
+        first:
+          name: _TilingX
+        second: 3.01
+      data:
+        first:
+          name: _TilingY
+        second: 32.85
+      data:
+        first:
+          name: _AlphaThreshold
         second: 0
       data:
         first:
-          name: _ZWrite
-        second: 1
-      data:
-        first:
-          name: _Tiling
-        second: 1
+          name: _Transparency
+        second: 0.426
       data:
         first:
           name: _gloss
@@ -190,8 +190,8 @@ Material:
       data:
         first:
           name: _OpaqueColor
-        second: {r: 0.5735294, g: 0.29665315, b: 0, a: 1}
+        second: {r: 0.5735294, g: 0.8235294, b: 0.11029412, a: 1}
       data:
         first:
           name: _TransparentColor
-        second: {r: 0.47794116, g: 0.2661153, b: 0.07379975, a: 1}
+        second: {r: 0.47794116, g: 0.41911763, b: 0, a: 1}

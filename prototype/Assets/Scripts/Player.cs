@@ -6,15 +6,20 @@ public class Player : MonoBehaviour {
     float speed = 6.0f;                             // 앞뒤 이동량 초기화
     const float curve = 9.0f;                    // 좌우 이동량(고정)
     bool isJumped;                                  // 점프중인지?
+    public GameObject explosion;
+    bool isDestroyed;
 
     void Start ()
     {
         isJumped = false;                           // 점프상태 초기화
+        isDestroyed = false;
     }   
     
 	void FixedUpdate ()
     {
         //Debug.Log(speed);
+        Debug.Log("destroy : " + isDestroyed);
+
 
         float amtMove = speed * Time.deltaTime;
         float amtCurve = curve * Time.deltaTime;
@@ -31,19 +36,46 @@ public class Player : MonoBehaviour {
             speed -= 0.6f;
         }
 
+
         if (Input.GetKey(KeyCode.LeftArrow))         //좌이동
         {
             transform.Translate(Vector3.left * amtCurve);
+            Debug.Log(transform.localRotation.z);
+            if (transform.rotation.z * 100 < 30)    //좌 기울임
+            {
+                transform.Rotate(0, 0, 40 * Time.deltaTime);
+            }
         }
+        else if (transform.rotation.z * 100 > 0)    //기울임 원상복귀
+        {
+            Debug.Log("조건" + transform.rotation.z);
+            transform.Rotate(0, 0, -60 * Time.deltaTime);
+        }
+
 
         if (Input.GetKey(KeyCode.RightArrow))         //우이동
         {
             transform.Translate(Vector3.right * amtCurve);
+            Debug.Log(transform.localRotation.z);
+            if (transform.rotation.z * 100 > -30)   //우 기울임
+            {
+                transform.Rotate(0, 0, -40 * Time.deltaTime);
+            }
+        }
+        else if (transform.rotation.z * 100 < 0)    //기울임 원상복귀
+        {
+            Debug.Log("조건" + transform.rotation.z);
+            transform.Rotate(0, 0, 60 * Time.deltaTime);
         }
 
         if (Input.GetKey(KeyCode.Space) && isJumped == false)                 // 점프
         {
             GetComponent<Rigidbody>().AddForce(Vector3.up * 800);
+        }
+        
+        if (Input.GetKeyDown(KeyCode.R) && isDestroyed)
+        {
+            GameObject.Find("GameManager").SendMessage("Restart");
         }
 
     }
@@ -57,7 +89,7 @@ public class Player : MonoBehaviour {
     }
 
     void OnCollisionStay (Collision other)                                       // 나 착지했다
-    {
+    {   
         if (other.gameObject.CompareTag("ground"))
             isJumped = false;
         Debug.Log(isJumped);
@@ -79,8 +111,15 @@ public class Player : MonoBehaviour {
         transform.Translate(direction);
     }
 
-    void Destroy()
+    void DestroyByCollision()
     {
-        GameObject.Destroy(gameObject);
+        if (speed >= 40.0f)
+        {
+            isDestroyed = true;
+            GameObject.Find("Main Camera").SendMessage("IsDestroyed");
+            Instantiate(explosion, transform.position, transform.rotation);
+            GameObject.Destroy(gameObject);
+        }
     }
+
 }
