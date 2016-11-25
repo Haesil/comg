@@ -40,15 +40,13 @@ public class Player : MonoBehaviour {
         if (Input.GetKey(KeyCode.LeftArrow))         //좌이동
         {
             transform.Translate(Vector3.left * amtCurve);
-            Debug.Log(transform.localRotation.z);
-            if (transform.rotation.z * 100 < 30)    //좌 기울임
+            if (transform.rotation.z * 100 < 20)    //좌 기울임
             {
                 transform.Rotate(0, 0, 40 * Time.deltaTime);
             }
         }
         else if (transform.rotation.z * 100 > 0)    //기울임 원상복귀
         {
-            Debug.Log("조건" + transform.rotation.z);
             transform.Rotate(0, 0, -60 * Time.deltaTime);
         }
 
@@ -56,15 +54,13 @@ public class Player : MonoBehaviour {
         if (Input.GetKey(KeyCode.RightArrow))         //우이동
         {
             transform.Translate(Vector3.right * amtCurve);
-            Debug.Log(transform.localRotation.z);
-            if (transform.rotation.z * 100 > -30)   //우 기울임
+            if (transform.rotation.z * 100 > -20)   //우 기울임
             {
                 transform.Rotate(0, 0, -40 * Time.deltaTime);
             }
         }
         else if (transform.rotation.z * 100 < 0)    //기울임 원상복귀
         {
-            Debug.Log("조건" + transform.rotation.z);
             transform.Rotate(0, 0, 60 * Time.deltaTime);
         }
 
@@ -73,11 +69,7 @@ public class Player : MonoBehaviour {
             GetComponent<Rigidbody>().AddForce(Vector3.up * 800);
         }
         
-        if (Input.GetKeyDown(KeyCode.R) && isDestroyed)
-        {
-            GameObject.Find("GameManager").SendMessage("Restart");
-        }
-
+       
     }
 
     void OnCollisionExit (Collision other)                                         // 나 점프했다
@@ -117,8 +109,10 @@ public class Player : MonoBehaviour {
         {
             isDestroyed = true;
             GameObject.Find("Main Camera").SendMessage("IsDestroyed");
+            GameObject.Find("GameManager").SendMessage("Destroy");
             Instantiate(explosion, transform.position, transform.rotation);
             GameObject.Destroy(gameObject);
+            Debug.Log(isDestroyed);
         }
     }
 
